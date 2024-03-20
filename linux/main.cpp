@@ -58,6 +58,11 @@ ERA_WRITE(V1) {     // V0 = 0 FLOW=FULL   V0=1 FLOW = EMPTY
      value2 = param.getInt();
     // in nó ra
 }
+ERA_WRITE(V3) {     
+    
+     error = param.getInt();
+    ERa.virtualWrite(V3, error);
+}
 void CASE_ERROR()
 {
 	if ( value1 == 1)
@@ -66,6 +71,7 @@ void CASE_ERROR()
 		if ( value2 == 1 )
 		{
 			error = 1;    // phat hien loi
+			
 		}
 		else
 		{

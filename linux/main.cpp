@@ -46,7 +46,7 @@ void setup() {
 	{
         printf("Uptime: %d\r\n", ERaMillis() / 1000L);
     });
-    ERa.addInterval(1000L,CASE_ERROR() );
+    ERa.addInterval(10000L,CASE_ERROR() );
 }
 ERA_WRITE(V0) {     // V0 = 0 INVER=STOP   V0=1 INVER=RUN 
     /* Get value from Virtual Pin 0 and write Pin 2. */

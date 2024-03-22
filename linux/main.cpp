@@ -37,7 +37,22 @@ ERA_CONNECTED() {
 ERA_DISCONNECTED() {
     printf("ERa disconnected!\r\n");
 }
-
+void ERROR()
+{
+	if ( value1 == 1)
+	{
+		
+		if ( value2 == 1 )
+		{
+			error = 1;    // phat hien loi
+			
+		}
+		else
+		{
+			error = 0;    // khong co loi 	
+		}
+	}
+}
 void setup() {
     ERa.setAppLoop(false);
     ERa.setBoardID(boardID);
@@ -46,7 +61,7 @@ void setup() {
 	{
         printf("Uptime: %d\r\n", ERaMillis() / 1000L);
     });
-    ERa.addInterval(10000L,CASE_ERROR() );
+    ERa.addInterval(10000L,ERROR);
 }
 ERA_WRITE(V0) {     // V0 = 0 INVER=STOP   V0=1 INVER=RUN 
     /* Get value from Virtual Pin 0 and write Pin 2. */
@@ -63,25 +78,10 @@ ERA_WRITE(V3) {
      error = param.getInt();
     ERa.virtualWrite(V3, error);
 }
-void CASE_ERROR()
-{
-	if ( value1 == 1)
-	{
-		
-		if ( value2 == 1 )
-		{
-			error = 1;    // phat hien loi
-			
-		}
-		else
-		{
-			error = 0;    // khong co loi 	
-		}
-	}
-}
+
 void loop() {
     ERa.run();
-    CASE_ERROR();
+    ERROR();
 }
 
 int main(int argc, char* argv[]) {
